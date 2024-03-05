@@ -6,7 +6,48 @@ public class CarProcessor {
     public CarProcessor(List<Car> cars){
         this.cars = cars;
     }
+    public List<Car> addElement(Car element) {
+        cars.add(element);
+        return cars;
+    }
 
+    // Метод удаления элемента из коллекции
+    public List<Car> removeElement(Car element) {
+        cars.remove(element);
+        return cars;
+    }
+    public List<Car> removeElement(int carId) {
+        for(Car car : cars){
+            if(car.getCarId() == carId){
+                cars.remove(car);
+            }
+        }
+        return cars;
+    }
+
+    // Метод изменения элемента в коллекции
+    public List<Car> updateElement(Car oldElement, Car newElement) {
+        if (cars.contains(oldElement)) {
+            int index = cars.indexOf(oldElement);
+            cars.set(index, newElement);
+        }
+        return cars;
+    }
+    public List<Car> updateElement(int carID, Car newElement) {
+        if (cars.contains(new CarProcessor(cars).findElementForID(carID))) {
+            int index = cars.indexOf(new CarProcessor(cars).findElementForID(carID));
+            cars.set(index, newElement);
+        }
+        return cars;
+    }
+    public Car findElementForID(int ID){
+        Car carFinded = null;
+        for(Car car : cars){
+            if(car.getCarId() == ID){
+                carFinded = car;
+            }
+        }
+        return carFinded;
     public void addElement(Car element) {
         cars.add(element);
     }
@@ -41,5 +82,9 @@ public class CarProcessor {
             }
         }
         return carsSt;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
