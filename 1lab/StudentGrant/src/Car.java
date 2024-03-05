@@ -4,13 +4,17 @@ public class Car{
     private double weight;
     private Driver driver;
     private Engine motor;
-    public Car(){}
+    private static int nextCarId = 0;
+    private int carId;
+    public Car(){
+    }
     public Car(String stamp, String classAvt, double weight, Driver driver, Engine motor){
         this.stamp = stamp;
         this.classAvt = classAvt;
         this.weight = weight;
         this.driver = driver;
         this.motor = motor;
+        this.carId = nextCarId++;
     }
 
     public double getWeight() {
@@ -31,5 +35,9 @@ public class Car{
 
     public String getStamp() {
         return stamp;
+    }
+
+    public int getCarId() {
+        return carId;
     }
 }
