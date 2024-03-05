@@ -40,7 +40,6 @@ public class CarProcessor {
         }
         return cars;
     }
-
     public Car findElementForID(int ID){
         Car carFinded = null;
         for(Car car : cars){
@@ -49,6 +48,21 @@ public class CarProcessor {
             }
         }
         return carFinded;
+    public void addElement(Car element) {
+        cars.add(element);
+    }
+
+    // Метод удаления элемента из коллекции
+    public void removeElement(Car element) {
+        cars.remove(element);
+    }
+
+    // Метод изменения элемента в коллекции
+    public void updateElement(Car oldElement, Car newElement) {
+        if (cars.contains(oldElement)) {
+            int index = cars.indexOf(oldElement);
+            cars.set(index, newElement);
+        }
     }
     public List<Driver> ExpMoreXyears(double Exyears){
         List<Driver> drivers = new ArrayList<>();
